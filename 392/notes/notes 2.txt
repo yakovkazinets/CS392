@@ -1,0 +1,146 @@
+s @@ s @@ s 2;;
+int = 5
+
+let a i j = i+j;;
+
+let i x = f f x;;
+val i: 'a -> ' a = ,<fun>
+
+polymorphic function
+whose type is type variables
+
+let f x = (x,x);;
+one arguement
+f: 'a -> 'a & a'
+
+let f (x,y) = (y,x);;
+takes a tuple and returns the reverse
+
+let f i j = i (i j);
+
+f:     ->    ->
+  i        j    i (i j)
+ 'a->'a   'a      'a  <----final type
+
+Since i is applied to j, it must be a function, since j is being fed into i, it is a type variable, since the result of i
+j is being fed into it, it is also a type variable
+
+f (fun i-> i ^ "a") "b";;
+string = "baa"
+
+f (fun i-> i ^ "a");;
+string -> string = <fun>
+
+let f i j = i j;;
+val f:('a ->'b) -> 'a -> 'b = <fun>
+
+f:la -> bool
+union f g: 'a->bool
+
+let a i = i =1 || i =2 || i=3 || i=5;;
+val a: int -> bool = <fun>
+
+a 1;;
+bool = true
+
+a 9;;
+bool = false;
+
+let b i = i=2 || i =5::
+val b : int -> bool = <fun>
+
+let union f g = fun i -> f i || g i;;
+val union: ('a->bool) -> ('a->bool) -> 'a ->bool = <fun>
+
+let a_union_b = union a b;;
+val a_union_b : int -> bool =<fun>
+
+
+LOOK AT PHONE FOR THIS PART!!!!
+
+let diff f g = fun i -> f i && not (g i);;
+val diff: ('a->bool) -> ('a->bool) -> 'a->bool = <fun>
+
+diff a b 2;;
+bool = false
+
+diff a b 3;;
+bool = true
+
+[1;2;3]];;
+int list = [1;2;3]
+
+[true;false]
+bool list = [true;list]
+
+[1;2] = [2;1];;
+bool = false
+
+[[]] = [];;
+bool = false;
+
+1::[2;3];;
+int list = [1;2;3]
+
+1::2::3::[];;
+int list = [1;2;3]
+
+let cons x l = x::l;;
+val cons: 'a -> 'a list -> 'a list = <fun>
+
+cons;;
+'a -> 'a list -> 'a list = <fun>
+
+[1;2;3] @ [4;5];;
+int list = [1;2;3;4;5]
+
+emacs basic.m.l
+
+let rec fact (n:int):int =
+	match n with
+	 0 -> 1
+	 m -> m * fact (m-1)
+
+let rec sum (n:int):int =
+	match n with
+ 	 0-> 0
+	 m when m>0 -> m + sum (m-1)
+	 _ -> failwidth "Undefined"
+
+let rec sizel l =
+	match l with
+	 [] -> 0
+	 h::t -> 1 + sizel t
+
+let rec suml l =
+	match l with
+	[] -> 0
+	h::t -> h + suml t
+
+let rec repeat e n = // n copies of e!
+	match n with
+	 0-> []
+	 m -> e::repeat e(m-1)
+
+let rec repeat' e n = function
+	 0-> []
+	 m -> e::repeat' e(m-1)
+
+let rec s = function
+	[] -> []
+	h::t -> h::h::s t
+
+let rec sn n = function
+	[] -> []
+	h::t -> repeat h n :: sn n t //whats wrong? 
+//what we actually want!
+let rec sn n = function
+	[] -> []
+	h::t -> repeat h n @ sn n t
+
+let rec rad = function 
+	[] - > []
+	[x] -> [x]
+	x::y::t when x=y -> rad (y::t)
+	x::y::t -> x::rad (y::t) //deletes the dupes in order 
+

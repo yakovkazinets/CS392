@@ -1,0 +1,105 @@
+C is preferred for systems programming due to its better
+efficiency and low-level control.
+
+C is a procedural language
+
+C is like a subset of C++
+
+Memory Management is (even more) the job of the programmer
+	With great power comes greate responsibility
+	No new or delete operators!!!!!!!!!!!!!!!!!!!!!!!!!
+
+int main (int argc, char **argv) {
+	char var0;
+	int var_1;
+	float Var_1;
+	var0= '0';
+	return 0;
+}
+
+Primitive Types
+
+int - integer
+char - character - a single byte (it is actually a number)
+short - short integer
+long - long integer
+
+Above types can also be unsigned
+
+float - floating point number
+double -- double-precision floating point
+
+No bool type in ANSI C!
+But starting in c99, #include <stdbool.h> and you have true and false\
+
+literals
+
+85	decimal
+0213	octal
+0x4b	hexadecimal
+30	int
+30u	unsigned int
+30l	long
+30ul	unsigned long
+3.14159	double
+314159E-%L	double
+210.5f	float
+'c'	char
+"abcd"	string
+
+int -> unsigned int -> long -> unsigned long -> long long -> unsigned long long -> float -> double -> unsigned double
+
+int main(int argc, char **argv) {
+	float f;
+	int a = 20, b = 3;
+	f = a/b; //What is f?
+	f = (float)a/b;
+}
+
+Constants by Macro
+
+Define using #define <name> <replacement text>
+
+#define PI 3.14
+int main(int argc, char **argv) {
+	flaot pi=PI;
+	return 0;
+}
+
+Enumerations
+
+Examples:
+enum boolean {NO, YES}
+	Define NO as 0 and YES as 1
+
+Use of Enums
+
+enum { Sun, Mon, Teus, Wed, Thurs, FRi, Sat};
+int main(int argc, char **argv) {
+	enum week today;
+	today = Wed;
+	return 0;
+}
+
+Unions
+
+union my_union {
+	int i;
+	short s;
+	char c;
+};
+
+Use of Union
+union my_union { int; short s; char c;}
+
+int main(int argc, char **argv) {
+	union my_union test;
+	int var0;
+	test.i = 0;
+	test.c = 'A';
+	test.s = 16383;
+	var0 = test.c;
+}
+
+
+struct my_s {

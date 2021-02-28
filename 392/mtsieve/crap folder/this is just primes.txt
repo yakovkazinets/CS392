@@ -1,0 +1,25 @@
+    int a = 2;
+    //double b = 20;
+    int *low_primes;
+    double b = 1000;
+    //limit = sqrt(limit);
+    double limit= floor(sqrt(b));
+    //printf("%f\n", b);
+    low_primes = malloc(sizeof(int) * limit);
+    for(int i = a; i< limit; i++){
+        low_primes[i] = 1;
+    }
+    for (int i = a; i< limit; i++){
+        if (low_primes[i]){
+            for (int j = i; i * j < limit; j++){
+                low_primes[i * j] = 0;
+            }
+        }
+    }
+    for (int i = a; i < limit; i++){
+        if (low_primes[i]){
+            printf("%d ", i);
+        }
+    }
+
+    printf("\n");
